@@ -3,11 +3,13 @@ export interface Product {
     name: string;
     unitPrice: number;
     amount: number;
+    selectedAmount: number;
+    isSelected: boolean;
 }
 
 export interface ProductDTO {
     id: string;
     name: string;
-    unitPrice: number;
+    unit_price: number;
     amount: number;
 }

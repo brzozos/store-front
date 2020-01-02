@@ -8,6 +8,7 @@ import { CourierComponent } from './modules/courier/courier.component';
 import {ClientComponent} from './modules/client/client.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {HttpClientModule} from '@angular/common/http';
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes, {paramsInheritanceStrategy: 'always'}),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

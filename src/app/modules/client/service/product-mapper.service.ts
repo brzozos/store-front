@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Product, ProductDTO} from '../model/product';
 
 @Injectable({
@@ -7,13 +7,17 @@ import {Product, ProductDTO} from '../model/product';
 export class ProductMapperService {
 
   convertToModel(productDto: ProductDTO[]): Product[] {
-    return productDto.map(
-      dto =>  <Product> {
-        id: dto.id,
-        amount: dto.amount,
-        name: dto.name,
-        unitPrice: dto.unitPrice
-      }
-    );
+    return productDto.map(dto => this.convertProductToModel(dto));
+  }
+
+  private convertProductToModel(dto: ProductDTO): Product {
+    return {
+      id: dto.id,
+      amount: dto.amount,
+      name: dto.name,
+      unitPrice: dto.unit_price,
+      selectedAmount: 1,
+      isSelected: false
+    };
   }
 }
