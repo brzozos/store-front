@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Product, ProductDTO} from '../model/product';
+import {OrderProductDTO} from '../model/order';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,13 @@ export class ProductMapperService {
       unitPrice: dto.unit_price,
       selectedAmount: 1,
       isSelected: false
+    };
+  }
+
+  convertProductToOrderProductDto(p: Product): OrderProductDTO {
+    return {
+      amount: p.selectedAmount,
+      name: p.name
     };
   }
 }

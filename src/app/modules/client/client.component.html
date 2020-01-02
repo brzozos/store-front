@@ -1,19 +1,19 @@
-<div class="row py-3">
+<div class="row py-3" *ngIf="products$ | async as products">
   <div class="col-6">
     <div class="row py-2">
       <div class="col-6">
         <label for="userName">Imię</label>
-        <input id="userName" class="form-control" type="text" placeholder="Jan">
+        <input id="userName" class="form-control" type="text" placeholder="Jan" [(ngModel)]="order.user_name">
       </div>
       <div class="col-6">
         <label for="userSurname">Nazwisko</label>
-        <input id="userSurname" class="form-control" type="text" placeholder="Kowalski">
+        <input id="userSurname" class="form-control" type="text" placeholder="Kowalski" [(ngModel)]="order.user_surname">
       </div>
     </div>
     <div class="row py-2">
       <div class="col-12">
         <label for="address">Adres dostawy</label>
-        <input id="address" class="form-control" type="text" placeholder="Goralska 2/8 01-112 Warszawa">
+        <input id="address" class="form-control" type="text" placeholder="Goralska 2/8 01-112 Warszawa" [(ngModel)]="order.user_address">
       </div>
     </div>
     <div class="row py-2">
@@ -23,7 +23,7 @@
     </div>
     <div class="row py-2">
       <div class="col-12 text-md-right">
-        <button class="btn btn-primary btn-lg" [disabled]="totalCost === '0.00'">
+        <button class="btn btn-primary btn-lg" [disabled]="submitOrderDisabled()" (click)="submitOrder(products)">
           ZŁÓŻ ZAMÓWIENIE
         </button>
       </div>
@@ -31,14 +31,14 @@
 
   </div>
 
-  <div class="col-6" *ngIf="products$ | async as products">
+  <div class="col-6">
     <div class="row p-2" *ngFor="let product of products">
       <div class="col-2 form-check">
         <input [id]="'productSelected-'+product.id" [(ngModel)]="product.isSelected"
                (ngModelChange)="countTotalCost(products)"
                type="checkbox" class="form-check-input">
         <input [id]="'productAmountSelected-'+product.selectedAmount" [(ngModel)]="product.selectedAmount"
-               (ngModelChange)="countTotalCost(products)"
+               (ngModelChange)="countTotalCost(products)" style="width: 50px"
                type="number" [value]="1" [min]="1" [max]="product.amount" step="1"/>
       </div>
       <div class="col-6">
