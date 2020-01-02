@@ -1,0 +1,14 @@
+.dashboard-title {
+  font-family: "Kristen ITC";
+  color: navy;
+  font-size: 61px;
+  text-align: center;
+}
+
+.dashboard-text {
+  padding-top: 20px;
+  font-family: "Baskerville Old Face";
+  color: navy;
+  font-size: 40px;
+  text-align: center;
+}
