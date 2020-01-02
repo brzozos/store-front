@@ -1,1 +1,5 @@
-<p>client works!</p>
+<div class="col" *ngIf="products$ | async as products">
+  <div class="row p-2" *ngFor="let product of products">
+    {{product.name}}
+  </div>
+</div>

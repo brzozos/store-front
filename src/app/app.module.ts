@@ -7,6 +7,7 @@ import {appRoutes} from './app-routing';
 import { CourierComponent } from './modules/courier/courier.component';
 import {ClientComponent} from './modules/client/client.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { DashboardComponent } from './modules/dashboard/dashboard.component';
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes, {paramsInheritanceStrategy: 'always'})
+    RouterModule.forRoot(appRoutes, {paramsInheritanceStrategy: 'always'}),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
