@@ -1,1 +1,16 @@
-<p>client-order works!</p>
+<div class="row" *ngIf="order$ | async as order">
+  <div class="col-12">
+    {{order.userName}}
+    {{order.userSurname}}
+    {{order.userAddress}}
+    {{order.totalValue}}
+    {{order.created}}
+    <ul>
+      <li *ngFor="let product of order.products">
+        {{product.name}} {{product.amount}} {{product.unit_price}}
+      </li>
+    </ul>
+  </div>
+</div>
+
+

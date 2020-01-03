@@ -13,3 +13,15 @@ export interface ProductDTO {
     unit_price: number;
     amount: number;
 }
+
+export interface ClientProductDTO {
+  name: string;
+  unit_price: number;
+  amount: number;
+}
+
+export interface ClientProduct {
+  name: string;
+  unit_price: number;
+  amount: number;
+}
