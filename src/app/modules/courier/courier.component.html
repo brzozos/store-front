@@ -1,1 +1,42 @@
-<p>courier works!</p>
+<div class="row" *ngIf="orders$ | async as orders">
+  <div class="col-6">
+    <ul class="list-group">
+      <li class="list-group-item" [class.active]="idOrderActive(order)"
+          *ngFor="let order of orders" (click)="orderPicked(order)">
+        {{order.id}}
+      </li>
+    </ul>
+
+  </div>
+
+  <div class="col-6" *ngIf="pickedOrder">
+    <div class="row">
+      <b class="pr-1">Order id:</b> {{pickedOrder.id}}
+    </div>
+    <div class="row">
+      <b class="pr-1">Odbiorca:</b> {{pickedOrder.userName}} {{pickedOrder.userSurname}}
+    </div>
+    <div class="row">
+      <b class="pr-1">Adres dostawy: </b>  {{pickedOrder.userAddress}}
+    </div>
+    <div class="row">
+      <b class="pr-1">Całkowity dystans: </b>  {{pickedOrder.route.distance / 1000 | number : '1.0-1'}}km
+    </div>
+    <div class="row">
+      <b class="pr-1">Całkowity czas: </b>  {{pickedOrder.route.duration / 60 | number : '1.0-1'}}min
+    </div>
+    <div class="row">
+      <b>TRASA</b>
+    </div>
+    <div class="row">
+      <div class="col-3">DYSTANS</div>
+      <div class="col-3">CZAS</div>
+      <div class="col-6">INSTRUKCJA</div>
+    </div>
+    <div class="row" *ngFor="let step of pickedOrder.route.steps">
+      <div class="col-3">{{step.distance / 1000 | number : '1.0-1'}}km</div>
+      <div class="col-3">{{step.duration / 60 | number : '1.0-1'}}min</div>
+      <div class="col-6">{{step.instruction}}</div>
+    </div>
+  </div>
+</div>
