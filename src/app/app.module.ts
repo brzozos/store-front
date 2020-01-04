@@ -10,6 +10,7 @@ import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {NgxSpinnerModule} from 'ngx-spinner';
+import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ClientOrderComponent } from './modules/client-order/client-order.component';
 import { CourierOrderComponent } from './modules/courier-order/courier-order.component';
@@ -29,7 +30,8 @@ import { CourierOrderComponent } from './modules/courier-order/courier-order.com
     HttpClientModule,
     FormsModule,
     NgxSpinnerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,6 +7,7 @@ import {map} from 'rxjs/operators';
 import {OrderDTO} from './model/order';
 import {OrderApiService} from './service/order-api.service';
 import {NgxSpinnerService} from 'ngx-spinner';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-client',
@@ -27,7 +28,8 @@ export class ClientComponent implements OnInit {
     private productApi: ProductApiService,
     private productMapper: ProductMapperService,
     private orderApi: OrderApiService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private toastrService: ToastrService
   ) {
   }
 
@@ -60,6 +62,7 @@ export class ClientComponent implements OnInit {
       .subscribe(
       value => {
         this.spinner.hide();
+        this.toastrService.success("ZAMÓWIENIE ZŁOŻONE");
       }
     );
   }
